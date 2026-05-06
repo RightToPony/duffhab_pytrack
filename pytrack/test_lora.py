@@ -1,12 +1,17 @@
-from pytrack import LoRa
+#!/usr/bin/env python3
 import time
 
+from pytrack import LoRa
+
 print("Create LoRa object")
-mylora = LoRa(Channel=0, Frequency=434.450, Mode=1)
+mylora = LoRa(Channel=0, Frequency=915.0, Mode=1, DIO0=4)
 
-print("Send message")
-mylora.send_text("$$Hello World\n")
+while True:
+    print("Send message")
+    now = int(time.time())
+    mylora.send_text(f"$$Mr. Watson, come here; I want you - {now}\n")
 
-while mylora.is_sending():
-	time.sleep(0.01)
-print("DONE")
+    while mylora.is_sending():
+	    time.sleep(0.01)
+    print("DONE")
+    time.sleep(1)
