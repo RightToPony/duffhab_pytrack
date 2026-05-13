@@ -12,6 +12,6 @@ while True:
     mylora.send_text(f"Mr. Watson, come here; I want you - {now}\n")
 
     while mylora.is_sending():
-	    time.sleep(0.01)
+        time.sleep(0.01)
     print("DONE")
     time.sleep(1)
